@@ -2742,7 +2742,7 @@
                     <aggregate name="total_days_occupied" string="Days Occupied" field="total_days_occupied" />
                     <aggregate name="total_occupancy_rate" string="Projected Occupancy %" field="total_occupancy_rate" />
                 </group>
-                <view type="pivot" ref="destinations.destination_product_report_pivot_view" />
+                <!--<view type="pivot" ref="destinations.destination_product_report_pivot_view" />-->
             </dashboard>
 
 
