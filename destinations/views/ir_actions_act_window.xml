@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.actions.act_window" id="destination_destinations_act_window">
+        <field name="name">Entities</field>
+        <field name="res_model">destination.destination</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_products_act_window">
+        <field name="name">Products</field>
+        <field name="res_model">product.template</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="search_view_id" ref="destination_product_search_view"/>
+        <field name="context">{"default_dest_ok":True, "default_detailed_type":"service"}</field>
+        <field name="domain">[("dest_ok","=",True)]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_memberships_act_window">
+        <field name="name">Rentals</field>
+        <field name="res_model">destination.membership</field>
+        <field name="view_mode">tree,form,gantt</field>
+        <field name="context">{'search_default_ongoing': 1}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_membership_line_act_window">
+        <field name="name">Rentals Lines</field>
+        <field name="res_model">destination.membership.line</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="destination_memberships_member_act_window">
+        <field name="name">Members</field>
+        <field name="res_model">destination.membership.member</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="context">{}</field>
+        <field name="domain">[('membership_active','=',True)]</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="destination_memberships_member_activity_process_act_window">
+        <field name="name">Member Activity Process</field>
+        <field name="res_model">destination.membership.member</field>
+        <field name="view_mode">kanban,search</field>
+        <field name="context">{'search_default_memberships': 1}</field>
+        <field name="domain">[('membership_state','=','active'),('membership_active','=',True),('state','=','active')]</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="destination_memberships_member_checkin_act_window">
+        <field name="name">Member Check-In</field>
+        <field name="res_model">destination.membership.member</field>
+        <field name="view_mode">kanban,search</field>
+        <field name="context">{'search_default_memberships': 1, 'search_default_inprocess':1}</field>
+        <field name="domain">[('member_access_status','=','inprocess')]</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="destination_memberships_member_checkout_act_window">
+        <field name="name">Member Check-Out</field>
+        <field name="res_model">destination.membership.member</field>
+        <field name="view_mode">kanban,search</field>
+        <field name="context">{'search_default_memberships': 1, 'search_default_checkedin':1}</field>
+        <field name="domain">[('member_access_status','=','checked-in')]</field>
+    </record>
+    
+    
+    <record model="ir.actions.act_window" id="destination_guest_act_window">
+        <field name="name">Guest Activity</field>
+        <field name="res_model">destination.guest</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="context">{'search_default_group_member_id': 1, 'search_default_group_date_month': 1, 'search_default_group_date_day': 1, 'search_default_my_today':1, 'search_default_filter_new':1, 'search_default_filter_pending':1}</field>
+        <field name="domain">[]</field>
+    </record>
+    <!--<record model="ir.actions.act_window" id="destination_guest_batch_act_window">
+        <field name="name">Guest Batch</field>
+        <field name="res_model">destination.guest.batch</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>-->
+    <record model="ir.actions.act_window" id="destination_membership_blacklist_act_window">
+        <field name="name">Blacklist Registry</field>
+        <field name="res_model">destination.blacklist</field>
+        <field name="view_mode">tree</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_price_act_window">
+        <field name="name">Price Rules</field>
+        <field name="res_model">destination.price</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_guest_process_act_window">
+        <field name="name">Guest Process</field>
+        <field name="res_model">destination.guest</field>
+        <field name="view_mode">kanban,search</field>
+        <field name="context">{'search_default_group_member_id': 1, 'search_default_my_today':1}</field>
+        <field name="domain">[('state','=','new')]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_guest_checkin_act_window">
+        <field name="name">Guest Check-In</field>
+        <field name="res_model">destination.guest</field> 
+        <field name="view_mode">kanban,search</field>
+        <field name="context">{'default_access_function': 'in', 'search_default_group_member_id': 1}</field>
+        <field name="domain">[('state','=','inprocess')]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_guest_checkout_act_window">
+        <field name="name">Guest Check-Out</field>
+        <field name="res_model">destination.guest</field> 
+        <field name="view_mode">kanban,search</field>
+        <field name="context">{'default_access_function': 'out', 'search_default_group_member_id': 1}</field>
+        <field name="domain">[('state','=','checked-in')]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_access_code_act_window">
+        <field name="name">Access Codes</field>
+        <field name="res_model">destination.access.code</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_access_code_wizard_act_window">
+        <field name="name">Generate Access Codes</field>
+        <field name="res_model">destination.access.code.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_payment_method_act_window">
+        <field name="name">Payment Methods</field>
+        <field name="res_model">destination.payment.method</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_note_act_window">
+        <field name="name">Note Templates</field>
+        <field name="res_model">destination.note</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_membership_member_activity_act_window">
+        <field name="name">Member Activity</field>
+        <field name="res_model">destination.membership.member.activity</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="context">{'search_default_group_member_id': 1, 'search_default_my_today':1}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_product_report_act_window">
+        <field name="name">Products</field>
+        <field name="res_model">destination.product.report</field>
+        <field name="view_mode">tree,form,dashboard</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_product_report_wizard_act_window">
+        <field name="name">Product Report</field>
+        <field name="res_model">destination.product.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_membership_report_act_window">
+        <field name="name">Rentals</field>
+        <field name="res_model">destination.membership.report</field>
+        <field name="view_mode">tree,form,dashboard</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_membership_report_wizard_act_window">
+        <field name="name">Rental Report</field>
+        <field name="res_model">destination.membership.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_membership_line_report_act_window">
+        <field name="name">Profitability Records</field>
+        <field name="res_model">destination.membership.line.report</field>
+        <field name="view_mode">tree,form,dashboard</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_membership_line_report_wizard_act_window">
+        <field name="name">Profitability Report</field>
+        <field name="res_model">destination.membership.line.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="destination_access_report_act_window">
+        <field name="name">Access Records</field>
+        <field name="res_model">destination.access.report</field>
+        <field name="view_mode">tree,form,dashboard</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_access_report_wizard_act_window">
+        <field name="name">Access Report</field>
+        <field name="res_model">destination.access.report.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    <record model="ir.actions.act_window" id="destination_sale_order_list_act_window">
+        <field name="name">Sale Orders</field>
+        <field name="res_model">sale.order</field>
+        <field name="view_mode">tree,search</field>
+        <field name="search_view_id" ref="view_order_search_inherit_dest"/>
+        <field name="context">{"default_dest_source":"others"}</field>
+        <field name="domain">[("dest_source","=","others")]</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="destination_customer_list_act_window">
+        <field name="name">Customers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form,search</field>
+        <field name="search_view_id" ref="destination_res_partner_search_view"/>
+        <field name="context">{'create':0,'search_default_customer': 1,'res_partner_search_mode': 'customer', 'default_customer_rank': 1}</field>
+        <field name="domain">[('is_company','=',False)]</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="destination_guest_invite_act_window">
+        <field name="name">Guest Invite</field>
+        <field name="res_model">destination.guest.invite</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>
+    </record>
+    
+</odoo>

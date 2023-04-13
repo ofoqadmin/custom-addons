@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+        <record model="base.automation" id="destination_membership_auto_late">
+            <field name="name">Late Rentals (Automated)</field>
+            <field name="model_id" ref="destinations.model_destination_membership"/>
+            <field name="trigger">on_time</field>
+            <field name="filter_domain">[('state','=','active')]</field>
+            <field name="trg_date_id" ref="destinations.field_destination_membership__dest_checkout_time"/>
+            <field name="trg_date_range">0</field>
+            <field name="trg_date_range_type">hour</field>
+            <field name="state">code</field>
+            <field name="code">record['is_late'] = 1</field>
+        </record>
+        
+        
+        <record model="base.automation" id="destination_guest_auto_late">
+            <field name="name">Late Guests (Automated)</field>
+            <field name="model_id" ref="destinations.model_destination_guest"/>
+            <field name="trigger">on_time</field>
+            <field name="filter_domain">[('state','in',['inprocess','checked-in'])]</field>
+            <field name="trg_date_id" ref="destinations.field_destination_guest__expiry_date"/>
+            <field name="trg_date_range">0</field>
+            <field name="trg_date_range_type">hour</field>
+            <field name="state">code</field>
+            <field name="code">record['is_late'] = 1</field>
+        </record>
+        
+        <record model="base.automation" id="destination_guest_auto_expire">
+            <field name="name">Expired Guests (Automated)</field>
+            <field name="model_id" ref="destinations.model_destination_guest"/>
+            <field name="trigger">on_time</field>
+            <field name="filter_domain">[('state','=','new')]</field>
+            <field name="trg_date_id" ref="destinations.field_destination_guest__expiry_date"/>
+            <field name="trg_date_range">24</field>
+            <field name="trg_date_range_type">hour</field>
+            <field name="state">code</field>
+            <field name="code">record['state'] = 'expired'</field>
+        </record>
+
+        <record model="ir.actions.server" id="destination_member_clean_pending_tasks">
+            <field name="name">Clean Pending Tasks</field>
+            <field name="model_id" ref="destinations.model_destination_membership_member"/>
+            <field name="state">code</field>
+            <field name="code">
+            for record in records.filtered(lambda r: r.state != 'pending').activity_ids.filtered(lambda r: r.summary == 'Request Member Approval'):
+                record.action_feedback(feedback='Cleaned')
+            </field>
+        </record>
+        
+    </data>
+</odoo>

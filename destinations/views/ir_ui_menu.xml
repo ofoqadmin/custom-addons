@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="menu_dest_root" model="ir.ui.menu">
+            <field name="name">Destinations</field>
+            <field name="sequence">10</field>
+            <field name="web_icon">destinations,static/description/icon.png</field>
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]" />
+        </record>
+        <record id="menu_dest" model="ir.ui.menu">
+            <field name="name">Entities</field>
+            <field name="sequence">20</field>
+            <field name="parent_id" ref="menu_dest_root" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]" />
+        </record>
+        <record id="menu_dest_dest" model="ir.ui.menu">
+            <field name="name">Entities</field>
+            <field name="sequence">10</field>
+            <field name="parent_id" ref="menu_dest" />
+            <field name="action" ref="destination_destinations_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_dest_products" model="ir.ui.menu">
+            <field name="name">Products</field>
+            <field name="sequence">20</field>
+            <field name="parent_id" ref="menu_dest" />
+            <field name="action" ref="destination_products_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_memberships" model="ir.ui.menu">
+            <field name="name">Rentals</field>
+            <field name="sequence">20</field>
+            <field name="parent_id" ref="menu_dest_root" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_memberships_memberships" model="ir.ui.menu">
+            <field name="name">Rentals</field>
+            <field name="sequence">1</field>
+            <field name="parent_id" ref="menu_memberships" />
+            <field name="action" ref="destination_memberships_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_memberships_members" model="ir.ui.menu">
+            <field name="name">Members</field>
+            <field name="sequence">2</field>
+            <field name="parent_id" ref="menu_memberships" />
+            <field name="action" ref="destination_memberships_member_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_dest_other_sales" model="ir.ui.menu">
+            <field name="name">Other Sales</field>
+            <field name="sequence">3</field>
+            <field name="parent_id" ref="menu_memberships" />
+            <field name="action" ref="destination_sale_order_list_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_access" model="ir.ui.menu">
+            <field name="name">Access</field>
+            <field name="sequence">30</field>
+            <field name="parent_id" ref="menu_dest_root" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_membership_guest" model="ir.ui.menu">
+            <field name="name">Guest Activity</field>
+            <field name="sequence">1</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_guest_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                          (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_membership_guest_invite" model="ir.ui.menu">
+            <field name="name">Guest Invite</field>
+            <field name="sequence">2</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_guest_invite_act_window" />
+            
+        </record>
+        
+        <!--<record id="menu_membership_guest_batch" model="ir.ui.menu">
+            <field name="name">Guest Batch</field>
+            <field name="sequence">2</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_guest_batch_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                          (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            ]"/>
+        </record>-->
+        
+        <!--<record id="menu_membership_guest_registration" model="ir.ui.menu">
+            <field name="name">Guest Registration</field>
+            <field name="sequence">2</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_guest_registration_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            ]"/>
+        </record>-->
+        <record id="menu_membership_guest_process" model="ir.ui.menu">
+            <field name="name">Guest Process</field>
+            <field name="sequence">3</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_guest_process_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_membership_guest_checkin" model="ir.ui.menu">
+            <field name="name">Guest Check-In</field>
+            <field name="sequence">4</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_guest_checkin_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_membership_guest_checkout" model="ir.ui.menu">
+            <field name="name">Guest Check-Out</field>
+            <field name="sequence">5</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_guest_checkout_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_membership_member_activity_process" model="ir.ui.menu">
+            <field name="name">Member Process</field>
+            <field name="sequence">6</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_memberships_member_activity_process_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_membership_member_activity_checkin" model="ir.ui.menu">
+            <field name="name">Member Check-In</field>
+            <field name="sequence">7</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_memberships_member_checkin_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_membership_member_activity_checkout" model="ir.ui.menu">
+            <field name="name">Member Check-Out</field>
+            <field name="sequence">8</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_memberships_member_checkout_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_membership_member_activity" model="ir.ui.menu">
+            <field name="name">Member Activity</field>
+            <field name="sequence">9</field>
+            <field name="parent_id" ref="menu_access" />
+            <field name="action" ref="destination_membership_member_activity_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+
+        <record id="menu_settings" model="ir.ui.menu">
+            <field name="name">Settings</field>
+            <field name="sequence">50</field>
+            <field name="parent_id" ref="menu_dest_root" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_membership_customer_list" model="ir.ui.menu">
+            <field name="name">Customers</field>
+            <field name="sequence">1</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_customer_list_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+
+        <record id="menu_membership_blacklist_registry" model="ir.ui.menu">
+            <field name="name">Blacklist Registry</field>
+            <field name="sequence">1</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_membership_blacklist_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_membership_price" model="ir.ui.menu">
+            <field name="name">Price Rules</field>
+            <field name="sequence">2</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_price_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_access_code" model="ir.ui.menu">
+            <field name="name">Access Codes</field>
+            <field name="sequence">3</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_access_code_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_access_code_wizard" model="ir.ui.menu">
+            <field name="name">Generate Access Codes</field>
+            <field name="sequence">4</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_access_code_wizard_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_destination_payment_methods" model="ir.ui.menu">
+            <field name="name">Payment Methods</field>
+            <field name="sequence">5</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_payment_method_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_destination_note" model="ir.ui.menu">
+            <field name="name">Note Templates</field>
+            <field name="sequence">6</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_note_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            ]"/>
+        </record>
+       <!-- 
+        <record id="menu_destination_product_report" model="ir.ui.menu">
+            <field name="name">Product Report Lines</field>
+            <field name="sequence">7</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_product_report_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_destination_membership_report" model="ir.ui.menu">
+            <field name="name">Rental Report</field>
+            <field name="sequence">8</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_membership_report_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            ]"/>
+        </record>
+        <record id="menu_destination_membership_report" model="ir.ui.menu">
+            <field name="name">Rental Lines Report</field>
+            <field name="sequence">9</field>
+            <field name="parent_id" ref="menu_settings" />
+            <field name="action" ref="destination_membership_line_report_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            ]"/>
+        </record>
+    -->
+        <record id="menu_reports" model="ir.ui.menu">
+            <field name="name">Reports</field>
+            <field name="sequence">40</field>
+            <field name="parent_id" ref="menu_dest_root" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            ]"/>
+        </record>
+        <!--
+        <record id="menu_destination_product_report_wizard" model="ir.ui.menu">
+            <field name="name">Occupancy Report</field>
+            <field name="sequence">20</field>
+            <field name="parent_id" ref="menu_reports" />
+            <field name="action" ref="destination_product_report_wizard_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_destination_membership_report_wizard" model="ir.ui.menu">
+            <field name="name">Rental Report</field>
+            <field name="sequence">30</field>
+            <field name="parent_id" ref="menu_reports" />
+            <field name="action" ref="destination_membership_report_wizard_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            ]"/>
+        </record>
+        -->
+        <record id="menu_destination_membership_line_report_wizard" model="ir.ui.menu">
+            <field name="name">Profitability Report</field>
+            <field name="sequence">10</field>
+            <field name="parent_id" ref="menu_reports" />
+            <field name="action" ref="destination_membership_line_report_wizard_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                          (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            ]"/>
+        </record>
+        
+        <record id="menu_destination_access_report_wizard" model="ir.ui.menu">
+            <field name="name">Access Report</field>
+            <field name="sequence">20</field>
+            <field name="parent_id" ref="menu_reports" />
+            <field name="action" ref="destination_access_report_wizard_act_window" />
+            <field name="groups_id" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                          (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            ]"/>
+        </record>
+
+
+    </data>
+</odoo>

@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    
+    
+    
+    <template id="dest_online_memberships" name="Memberships Portal">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        
+            
+                        <div>
+                            <h1>
+                                Select Membership
+                            </h1>
+                        </div>
+                        
+                        <t t-foreach="members" t-as="member">
+                            <form action="/guest-time">
+                                <input name="member_id" t-att-value="member.id" hidden="true"/>
+                            <div class="card" style="width: 18rem;">
+                              <div class="card-body">
+                                <h5 class="card-title" t-esc="member.membership_id.dest_id.name"/>
+                                <h6 class="card-subtitle mb-2 text-muted" t-esc="member.membership_id.membership_code"/>
+                                <p class="card-text" t-esc="'Valid until ' + str(member.membership_id.dest_checkout_time)" t-if="member.membership_id.state == 'active'"/>
+                                  <button type="submit" class=" card-link text-right fa fa-arrow-right"/>
+                                
+                                
+                              </div>
+                            </div>
+                            </form>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    <template id="dest_online_guests_datetime" name="Date Time">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        
+            
+                        <div>
+                            <h1>
+                                Choose Visit Date/Time
+                            </h1>
+                        </div>
+                        
+                        
+                            <form action="/guest">
+                                <input name="member_id" t-att-value="member.id" hidden="true"/>
+                                <div class="form-group">
+                                    <label for="access_date">Date:</label>
+                                    <input type="date" class="form-control" name="access_date" id="access_date" required="true" t-att-value="getcurdate"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="access_time">Time:</label>
+                                    <input type="time" class="form-control" name="access_time" id="access_time" required="true" t-att-value="getcurtime"/>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Create</button>
+                            </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    
+    <template id="dest_online_guests" name="Guest Registration">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        
+            
+                        <div>
+                            <h1>
+                                Invite Guests
+                            </h1>
+                        </div>
+                        
+                        
+                            <form action="/guest/form">
+                                <input name="member_id" t-att-value="member.id" hidden="true"/>
+                                <input name="access_date" t-att-value="access_date" hidden="true"/>
+                                <input name="access_time" t-att-value="access_time" hidden="true"/>
+                            <div class="card" style="width: 18rem;">
+                              <div class="card-body">
+                                  <h5 class="card-title">New Guest</h5>
+                                
+                                  <button type="submit" class=" card-link text-right fa fa-arrow-right"/>
+                                
+                                
+                              </div>
+                            </div>
+                            </form>
+                        
+                        <form action="/guest/form-favorite">
+                                <input name="member_id" t-att-value="member.id" hidden="true"/>
+                            <input name="access_date" t-att-value="access_date" hidden="true"/>
+                                <input name="access_time" t-att-value="access_time" hidden="true"/>
+                            <div class="card" style="width: 18rem;">
+                              <div class="card-body">
+                                  <h5 class="card-title">Favorite List</h5>
+                                
+                                  <button type="submit" class=" card-link text-right fa fa-arrow-right"/>
+                                
+                                
+                              </div>
+                            </div>
+                            </form>
+                        
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+    
+    
+    <template id="tmp_guest_form" name="New Guest">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        </head>
+
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    
+                    <div class="col-md-12">
+                       <form action="/guest/form/submit">
+                           <input name="member_id" t-att-value="member" hidden="true"/>
+                           <div class="form-group">
+                                <label for="access_date">Date:</label>
+                                <input type="datetime-local" class="form-control" name="access_date" id="access_date" required="true" t-att-value="getcurdate"/>
+                            </div>
+                           
+                            <div class="form-group">
+                                <label for="name">Name:</label>
+                                <input type="text" class="form-control" name="guest_name" id="guest_name" required="true" />
+                            </div>
+                            <div class="form-group">
+                                <label for="guest_mobile">Mobile:</label>
+                                <input type="text" class="form-control" name="guest_mobile" id="guest_mobile" required="true" />
+                            </div>
+                           <div class="form-group">
+                                <label for="guest_id_number">ID Number:</label>
+                                <input type="text" class="form-control" name="guest_id_number" id="guest_id_number" required="true" />
+                            </div>
+                           <div class="form-group">
+                               <label for="guest_gender">Gender:</label><br/>
+                               <input type="radio" id="guest_male" name="guest_gender" value="male" required="true"/>
+                               <label for="guest_male">Male</label><br/>
+                               <input type="radio" id="guest_female" name="guest_gender" value="female"/>
+                               <label for="guest_female">Female</label><br/>
+                            </div>
+                           <div class="form-group">    
+                                <label style="padding-top: 8px;" for="guest_age">Age Group:</label>    
+                                <select id="guest_age" name="guest_age" required="True" class="form-control">            
+                                    <option value="adult">Adult (16+)</option>
+                                    <option value="teenager">Teen (13-15)</option>
+                                    <option value="adult">Child (&lt;13)</option>
+                                </select>    
+                            </div>    
+                           <div class="form-group">
+                               <label for="guest_type">Entry:</label><br/>
+                               <input type="radio" id="guest_single" name="guest_type" value="single" required="true"/>
+                               <label for="guest_single">Single</label><br/>
+                               <input type="radio" id="guest_couple" name="guest_type" value="couple"/>
+                               <label for="guest_couple">Couple</label><br/>
+                            </div>
+                           <div class="form-group">    
+                                <label style="padding-top: 8px;" for="guest_age">Payment:</label>    
+                                <select id="token_type" name="token_type" required="True" class="form-control">            
+                                    <option value="guest">Guest Pays</option>
+                                    <option value="member">Member Pays</option>
+                                    <option value="free">Free</option>
+                                </select>    
+                            </div>  
+                           <div class="form-group">   
+                           <input type="checkbox" id="is_helper" name="is_helper"/>
+                            <label for="is_helper"> Domestic Helper</label>
+                            </div>  
+                           <div class="form-group">   
+                           <input type="checkbox" id="is_favorite" name="is_favorite"/>
+                            <label for="is_favorite"> Add to Favorite</label>
+                            </div>  
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </form>
+                    </div>
+                    
+                </div>
+              </div>
+          </t>
+    </template>
+    
+    
+    <template id="fav_guest_form" name="Favorite Guest">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        </head>
+
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    
+                    <div class="col-md-12">
+                       <form action="/guest/form-favorite/submit">
+                           <input name="member_id" t-att-value="member" hidden="true"/>
+                           <div class="form-group">
+                                <label for="access_date">Date:</label>
+                                <input type="datetime-local" class="form-control" name="access_date" id="access_date" required="true" t-att-value="getcurdate"/>
+                            </div>
+                           
+                           
+                           <div class="form-group">    
+                                <label style="padding-top: 8px;" for="fav_guest_id">Favorite List:</label>    
+                                <select id="fav_guest_id" name="fav_guest_id" class="form-control">
+                                    <t t-foreach="favorites" t-as="fav">                
+                                        <option t-att-value="fav.id" t-esc="fav.guest_name"/>
+                                    </t>        
+                                </select>    
+                            </div>    
+                           
+                           <div class="form-group">
+                               <label for="guest_type">Entry:</label><br/>
+                               <input type="radio" id="guest_single" name="guest_type" value="single" required="true"/>
+                               <label for="guest_single">Single</label><br/>
+                               <input type="radio" id="guest_couple" name="guest_type" value="couple"/>
+                               <label for="guest_couple">Couple</label><br/>
+                            </div>
+                           <div class="form-group">    
+                                <label style="padding-top: 8px;" for="guest_age">Payment:</label>    
+                                <select id="token_type" name="token_type" required="True" class="form-control">            
+                                    <option value="guest">Guest Pays</option>
+                                    <option value="member">Member Pays</option>
+                                    <option value="free">Free</option>
+                                </select>    
+                            </div>  
+                           
+                            <button type="submit" class="btn btn-primary">Create</button>
+                        </form>
+                    </div>
+                    
+                </div>
+              </div>
+          </t>
+    </template>
+    
+    
+    
+    <template id="tmp_guest_form_success" name="Guest Form Successfully Submitted">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="alert alert-success">
+                            Guest Invite created successfully.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    <template id="tmp_guest_form_error" name="Guest Form Error">
+        <t t-call="website.layout">
+            <div id="wrap">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="alert alert-warning">
+                            Error HT2251 MemberID does not match PartnerID.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+    
+</odoo>

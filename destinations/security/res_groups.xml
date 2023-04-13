@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        
+   
+        
+        <record model="res.groups" id="destination_sales_group" >
+            <field name="name">Destination Sales</field>
+            <field name="comment">Destination Sales Permission Group.</field>
+            <field name="category_id" ref="destination_module_category"/>
+            <!--<field name="implied_ids" eval="[(4, ref('account.group_account_invoice'))]"/>-->
+        </record>
+        
+        <record model="res.groups" id="destination_guest_process_group" >
+            <field name="name">Destination Guest Process</field>
+            <field name="comment">Destination Guest Process Permission Group.</field>
+            <field name="category_id" ref="destination_module_category"/>
+        </record>
+        
+        <record model="res.groups" id="destination_guest_checking_group" >
+            <field name="name">Destination Guest Check-in/out</field>
+            <field name="comment">Destination Guest Check-in/out Permission Group.</field>
+            <field name="category_id" ref="destination_module_category"/>
+        </record>
+        
+        <record model="res.groups" id="destination_guest_registration_group" >
+            <field name="name">Destination Guest Registration</field>
+            <field name="comment">Destination Guest Registration Permission Group.</field>
+            <field name="category_id" ref="destination_module_category"/>
+        </record>
+        <record model="res.groups" id="destination_accounting_group" >
+            <field name="name">Destination Accounting</field>
+            <field name="comment">Destination Accounting Permission Group.</field>
+            <field name="category_id" ref="destination_module_category"/>
+        </record>
+        
+        <record model="res.groups" id="destination_admin_group" >
+            <field name="name">Destination Admins</field>
+            <field name="comment">Destination Admins Permission Group.</field>
+            <field name="category_id" ref="destination_module_category"/>
+            <field name="implied_ids" eval="[
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group'))
+                                            ]"/>
+        </record>
+        <record model="res.groups" id="destination_super_admin_group" >
+            <field name="name">Destination Super Admins</field>
+            <field name="comment">Destination Super Admins Permission Group.</field>
+            <field name="category_id" ref="destination_module_category"/>
+            <field name="implied_ids" eval="[
+                                            (4, ref('destinations.destination_admin_group')),
+                                            (4, ref('destinations.destination_accounting_group')),
+                                            (4, ref('destinations.destination_sales_group')),
+                                            (4, ref('destinations.destination_guest_process_group')),
+                                            (4, ref('destinations.destination_guest_checking_group')),
+                                            (4, ref('destinations.destination_guest_registration_group'))
+                                            ]"/>
+        </record>        
+    </data>
+</odoo>

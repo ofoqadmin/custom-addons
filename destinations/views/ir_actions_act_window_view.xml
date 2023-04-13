@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo>
+  <record id="destination_destinations_act_window_view_form" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_destinations_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence">3</field>
+    <field name="view_id" ref="dest_form_view"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record id="destination_destinations_act_window_view_list" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_destinations_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence">2</field>
+    <field name="view_id" ref="dest_list_view"/>
+    <field name="view_mode">tree</field>
+  </record>
+  <record id="destination_destinations_act_window_view_kanban" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_destinations_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence">1</field>
+    <field name="view_id" ref="destination_destination_kanban_view"/>
+    <field name="view_mode">kanban</field>
+  </record>
+
+  <record id="destination_product_act_window_view_form" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_products_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence">1</field>
+    <field name="view_id" ref="dest_product_template_inherited_view"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record id="destination_product_act_window_view_list" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_products_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence" eval="False"/>
+    <field name="view_id" ref="dest_product_list_view"/>
+    <field name="view_mode">tree</field>
+  </record>
+  
+
+  <record id="destination_membership_act_window_view_form" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_memberships_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence">1</field>
+    <field name="view_id" ref="destination_membership_form_view"/>
+    <field name="view_mode">form</field>
+  </record>
+  <record id="destination_membership_act_window_view_list" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_memberships_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence" eval="False"/>
+    <field name="view_id" ref="destination_membership_list_view"/>
+    <field name="view_mode">tree</field>
+  </record>
+  <record id="destination_membership_act_window_view_gantt" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_memberships_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence" eval="False"/>
+    <field name="view_id" ref="destination_membership_gantt_view"/>
+    <field name="view_mode">gantt</field>
+  </record>
+    
+    <record id="destination_membership_member_act_window_view_list" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_memberships_member_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence" eval="False"/>
+    <field name="view_id" ref="destination_membership_member_list_view"/>
+    <field name="view_mode">tree</field>
+  </record>
+    
+  <record id="destination_membership_member_act_window_view_form" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_memberships_member_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence" eval="False"/>
+    <field name="view_id" ref="destination_membership_member_form_view"/>
+    <field name="view_mode">form</field>
+  </record>
+    
+  <record id="destination_membership_member_activity_process_act_window_view_kanban" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_memberships_member_activity_process_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence" eval="False"/>
+    <field name="view_id" ref="destination_membership_member_process_kanban_view"/>
+    <field name="view_mode">kanban</field>
+  </record>
+
+  <record id="destination_membership_member_activity_checkin_act_window_view_kanban" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_memberships_member_checkin_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence" eval="False"/>
+    <field name="view_id" ref="destination_membership_member_process_kanban_view"/>
+    <field name="view_mode">kanban</field>
+  </record>
+
+  <record id="destination_membership_member_activity_checkout_act_window_view_kanban" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_memberships_member_checkout_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence" eval="False"/>
+    <field name="view_id" ref="destination_membership_member_process_kanban_view"/>
+    <field name="view_mode">kanban</field>
+  </record>
+    
+    
+    
+  <record id="destination_price_act_window_view_form" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_price_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence">1</field>
+    <field name="view_id" ref="destination_price_form_view"/>
+    <field name="view_mode">form</field>
+  </record>
+    
+  <record id="destination_price_act_window_view_list" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_price_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence" eval="False"/>
+    <field name="view_id" ref="destination_price_list_view"/>
+    <field name="view_mode">tree</field>
+  </record>
+    
+    
+    <record id="destination_guest_act_window_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_guest_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence">1</field>
+        <field name="view_id" ref="destination_guest_form_view"/>
+        <field name="view_mode">form</field>
+    </record>
+    
+    <record id="destination_guest_act_window_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_guest_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence" eval="False"/>
+        <field name="view_id" ref="destination_guest_list_view"/>
+        <field name="view_mode">tree</field>
+    </record>
+    
+    
+   
+    
+    
+    
+    <record id="destination_guest_process_act_window_view_kanban" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_guest_process_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence" eval="False"/>
+        <field name="view_id" ref="destination_guest_process_kanban_view"/>
+        <field name="view_mode">kanban</field>
+    </record>
+    
+    <record id="destination_guest_checkin_act_window_view_kanban" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_guest_checkin_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence" eval="False"/>
+        <field name="view_id" ref="destination_guest_checkin_kanban_view"/>
+        <field name="view_mode">kanban</field>
+    </record>
+    
+    <record id="destination_guest_checkout_act_window_view_kanban" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_guest_checkout_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence" eval="False"/>
+        <field name="view_id" ref="destination_guest_checkout_kanban_view"/>
+        <field name="view_mode">kanban</field>
+    </record>
+    
+    <record id="destination_access_code_act_window_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_access_code_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence" eval="False"/>
+        <field name="view_id" ref="destination_access_code_list_view"/>
+        <field name="view_mode">tree</field>
+    </record>
+    
+    <record id="destination_access_code_act_window_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_access_code_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence" eval="False"/>
+        <field name="view_id" ref="destination_access_code_form_view"/>
+        <field name="view_mode">form</field>
+    </record>
+    
+    
+    
+    <record id="destination_membership_member_activity_act_window_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_membership_member_activity_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence">1</field>
+        <field name="view_id" ref="destination_membership_member_activity_form_view"/>
+        <field name="view_mode">form</field>
+    </record>
+    
+    <record id="destination_membership_member_activity_act_window_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_membership_member_activity_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence" eval="False"/>
+        <field name="view_id" ref="destination_membership_member_activity_list_view"/>
+        <field name="view_mode">tree</field>
+    </record>
+    
+    <record id="destination_note_act_window_view_list" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_note_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence" eval="False"/>
+        <field name="view_id" ref="destination_note_list_view"/>
+        <field name="view_mode">tree</field>
+    </record>
+    
+    <record id="destination_note_act_window_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_note_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence" eval="False"/>
+        <field name="view_id" ref="destination_note_form_view"/>
+        <field name="view_mode">form</field>
+    </record>
+    
+    <record id="destination_sale_order_act_window_view_tree" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_sale_order_list_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence">1</field>
+        <field name="view_id" ref="view_order_tree_inherit_dest"/>
+        <field name="view_mode">tree</field>
+    </record>
+    
+    <record id="destination_sale_order_act_window_view_form" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="destination_sale_order_list_act_window"/>
+        <field name="multi" eval="False"/>
+        <field name="sequence">2</field>
+        <field name="view_id" ref="view_order_form_inherit_dest"/>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record id="destination_customer_list_act_window_view_form" model="ir.actions.act_window.view">
+      <field name="act_window_id" ref="destination_customer_list_act_window"/>
+      <field name="multi" eval="False"/>
+      <field name="sequence">1</field>
+      <field name="view_id" ref="destination_customer_form_view"/>
+      <field name="view_mode">form</field>
+  </record>
+
+  <record id="destination_customer_list_act_window_view_list" model="ir.actions.act_window.view">
+    <field name="act_window_id" ref="destination_customer_list_act_window"/>
+    <field name="multi" eval="False"/>
+    <field name="sequence">0</field>
+    <field name="view_id" ref="destination_customer_list_view"/>
+    <field name="view_mode">tree</field>
+</record>
+    
+</odoo>
