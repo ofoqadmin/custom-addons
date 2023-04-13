@@ -6,7 +6,7 @@ from odoo.exceptions import UserError, ValidationError, Warning
 import datetime
 import pytz
 from pytz import timezone, UTC
-import json, simplejson
+import json
 from lxml import etree
 import math
 from odoo.tools import float_compare, format_datetime, format_time
