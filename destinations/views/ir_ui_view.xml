@@ -230,14 +230,14 @@
         <field name="model">product.template</field>
         <field name="inherit_id" ref="product.product_template_form_view"></field>
         <field name="mode">extension</field>
-        <field name="groups_id" eval="[
+        <!--<field name="groups_id" eval="[
                                             (4, ref('destinations.destination_admin_group')),
                                             (4, ref('destinations.destination_accounting_group')),
                                             (4, ref('destinations.destination_sales_group')),
                                             (4, ref('destinations.destination_guest_process_group')),
                                             (4, ref('destinations.destination_guest_checking_group')),
                                             (4, ref('destinations.destination_guest_registration_group'))
-                                            ]" />
+                                            ]" />-->
         <field name="arch" type="xml">
             <data>
                 <xpath expr="//form/sheet[@name='product_form']/div[@name='button_box']/button[1]" position="before">
@@ -475,7 +475,7 @@
     <record id="dest_product_list_view" model="ir.ui.view">
         <field name="name">product.template.product.list.dest.inherited</field>
         <field name="model">product.template</field>
-        <field name="groups_id" eval="[
+        <!--<field name="groups_id" eval="[
                                             (4, ref('destinations.destination_admin_group')),
                                           (4, ref('destinations.destination_super_admin_group')),
                                             (4, ref('destinations.destination_accounting_group')),
@@ -483,7 +483,7 @@
                                             (4, ref('destinations.destination_guest_process_group')),
                                             (4, ref('destinations.destination_guest_checking_group')),
                                             (4, ref('destinations.destination_guest_registration_group'))
-                                            ]" />
+                                            ]" />-->
         <field name="arch" type="xml">
             <tree>
                 <field name="sequence" optional="show" widget="handle" />
@@ -1330,7 +1330,7 @@
         <field name="name">sale.order.tree.inherit.dest</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_tree" />
-        <field name="groups_id" eval="[
+        <!--<field name="groups_id" eval="[
                                             (4, ref('destinations.destination_admin_group')),
                                           (4, ref('destinations.destination_super_admin_group')),
                                             (4, ref('destinations.destination_accounting_group')),
@@ -1338,7 +1338,7 @@
                                             (4, ref('destinations.destination_guest_process_group')),
                                             (4, ref('destinations.destination_guest_checking_group')),
                                             (4, ref('destinations.destination_guest_registration_group'))
-                                            ]" />
+                                            ]" />-->
         <field name="arch" type="xml">
             <xpath expr="//tree[1]/field[@name='name']" position="after">
     <field name="dest_id" optional="show"/>
@@ -1352,7 +1352,7 @@
         <field name="name">sale.order.form.inherit.dest</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
-        <field name="groups_id" eval="[
+        <!--<field name="groups_id" eval="[
                                             (4, ref('destinations.destination_admin_group')),
                                           (4, ref('destinations.destination_super_admin_group')),
                                             (4, ref('destinations.destination_accounting_group')),
@@ -1360,7 +1360,7 @@
                                             (4, ref('destinations.destination_guest_process_group')),
                                             (4, ref('destinations.destination_guest_checking_group')),
                                             (4, ref('destinations.destination_guest_registration_group'))
-                                            ]" />
+                                            ]" />-->
         <field name="arch" type="xml">
             <xpath expr="//group[@name='partner_details']" position="inside">
                 
@@ -1397,7 +1397,7 @@
         <field name="name">partner.form.inherit.dest</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form" />
-        <field name="groups_id" eval="[
+        <!--<field name="groups_id" eval="[
                                             (4, ref('destinations.destination_admin_group')),
                                           (4, ref('destinations.destination_super_admin_group')),
                                             (4, ref('destinations.destination_accounting_group')),
@@ -1405,7 +1405,7 @@
                                             (4, ref('destinations.destination_guest_process_group')),
                                             (4, ref('destinations.destination_guest_checking_group')),
                                             (4, ref('destinations.destination_guest_registration_group'))
-                                            ]" />
+                                            ]" />-->
         <field name="arch" type="xml">
 
             <xpath expr="//div[@name='button_box']/button[1]" position="before">
@@ -3273,14 +3273,14 @@
     <record id="destination_res_partner_search_view" model="ir.ui.view">
         <field name="name">res.partner.search.view</field>
         <field name="model">res.partner</field>
-        <field name="groups_id" eval="[
+        <!--<field name="groups_id" eval="[
                                             (4, ref('destinations.destination_admin_group')),
                                             (4, ref('destinations.destination_accounting_group')),
                                             (4, ref('destinations.destination_sales_group')),
                                             (4, ref('destinations.destination_guest_process_group')),
                                             (4, ref('destinations.destination_guest_checking_group')),
                                             (4, ref('destinations.destination_guest_registration_group'))
-                                            ]" />
+                                            ]" />-->
         <field name="arch" type="xml">
             <search string="Search Partner">
                     <field name="name" filter_domain="['|', '|', ('display_name', 'ilike', self), ('ref', '=', self), ('email', 'ilike', self)]"/>
@@ -3309,14 +3309,14 @@
     <record id="destination_customer_list_view" model="ir.ui.view">
         <field name="name">destination.customer.list.view</field>
         <field name="model">res.partner</field>
-        <field name="groups_id" eval="[
+        <!--<field name="groups_id" eval="[
                                             (4, ref('destinations.destination_admin_group')),
                                             (4, ref('destinations.destination_accounting_group')),
                                             (4, ref('destinations.destination_sales_group')),
                                             (4, ref('destinations.destination_guest_process_group')),
                                             (4, ref('destinations.destination_guest_checking_group')),
                                             (4, ref('destinations.destination_guest_registration_group'))
-                                            ]" />
+                                            ]" />-->
         <field name="arch" type="xml">
             <tree string="Contacts" sample="1" multi_edit="0">
                 
