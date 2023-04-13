@@ -2722,7 +2722,7 @@
     </record>
 
 
-    <record id="destination_product_report_dashboard_view" model="ir.ui.view">
+    <!--<record id="destination_product_report_dashboard_view" model="ir.ui.view">
         <field name="name">destination.product.report.dashboard.view</field>
         <field name="model">destination.product.report</field>
         <field name="arch" type="xml">
@@ -2742,12 +2742,12 @@
                     <aggregate name="total_days_occupied" string="Days Occupied" field="total_days_occupied" />
                     <aggregate name="total_occupancy_rate" string="Projected Occupancy %" field="total_occupancy_rate" />
                 </group>
-                <!--<view type="pivot" ref="destinations.destination_product_report_pivot_view" />-->
+                <view type="pivot" ref="destinations.destination_product_report_pivot_view" />
             </dashboard>
 
 
         </field>
-    </record>
+    </record>-->
 
 
     <record id="destination_product_report_wizard_form_view" model="ir.ui.view">
@@ -2888,7 +2888,7 @@
     </record>
 
 
-    <record id="destination_membership_dashboard_view" model="ir.ui.view">
+    <!--<record id="destination_membership_dashboard_view" model="ir.ui.view">
         <field name="name">destination.membership.dashboard.view</field>
         <field name="model">destination.membership.report</field>
         <field name="arch" type="xml">
@@ -2917,7 +2917,7 @@
 
 
         </field>
-    </record>
+    </record>-->
 
 
     <record id="destination_membership_report_wizard_form_view" model="ir.ui.view">
@@ -3062,7 +3062,7 @@
     </record>
 
 
-    <record id="destination_membership_line_dashboard_view" model="ir.ui.view">
+    <!--<record id="destination_membership_line_dashboard_view" model="ir.ui.view">
         <field name="name">destination.membership.line.dashboard.view</field>
         <field name="model">destination.membership.line.report</field>
         <field name="arch" type="xml">
@@ -3110,7 +3110,7 @@
 
 
         </field>
-    </record>
+    </record>-->
 
     
     
@@ -3191,7 +3191,7 @@
 
 
 
-    <record id="destination_access_dashboard_view2" model="ir.ui.view">
+    <!--<record id="destination_access_dashboard_view2" model="ir.ui.view">
         <field name="name">destination.access.dashboard.view</field>
         <field name="model">destination.access.report</field>
         <field name="arch" type="xml">
@@ -3223,7 +3223,7 @@
 
 
         </field>
-    </record>
+    </record>-->
     
     <record id="destination_membership_member_kanban_view" model="ir.ui.view">
         <field name="name">destination.membership.member.kanban.view</field>
